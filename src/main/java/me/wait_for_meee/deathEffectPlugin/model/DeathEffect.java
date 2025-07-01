@@ -29,6 +29,6 @@ public abstract class DeathEffect {
 
     @Override
     public final String toString() {
-        return this.getClass().getName();
+        return this.getClass().getSimpleName();
     }
 }

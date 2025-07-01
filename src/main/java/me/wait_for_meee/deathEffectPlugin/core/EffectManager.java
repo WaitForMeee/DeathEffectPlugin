@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nullable;
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +36,7 @@ public final class EffectManager {
 
         if (!file.exists()) {
             plugin.saveResource("effects.yml",false);
+            save();
         }
 
         config = new YamlConfiguration();
@@ -48,7 +50,8 @@ public final class EffectManager {
         ConfigurationSection section = config.getConfigurationSection("effects_map");
 
         if (section == null) {
-            throw new NullPointerException("No section \"effects_map\" in effects.yml");
+            config.createSection("effects_map");
+            save();
         }
 
         for (Map.Entry<String, Object> entry : section.getValues(false).entrySet()) {
@@ -82,8 +85,8 @@ public final class EffectManager {
 
         try {
             config.save(file);
-        } catch (final Throwable t) {
-            t.printStackTrace();
+        } catch (final Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -117,6 +120,34 @@ public final class EffectManager {
 
     @Nullable
     public DeathEffect getEffect(UUID uuid) {
-        return effectMap.get(uuid);
+
+        ConfigurationSection section = config.getConfigurationSection("effects_map");
+
+        if (section == null) {
+            config.createSection("effects_map");
+            save();
+            return null;
+        }
+
+        DeathEffect deathEffect;
+
+        Class<? extends DeathEffect> clazz = DeathEffect.getByString(section.getString(uuid.toString()));
+
+        if (clazz == null) {
+            return null;
+        }
+
+        try {
+            deathEffect = clazz.getDeclaredConstructor(OfflinePlayer.class).newInstance(Bukkit.getOfflinePlayer(uuid));
+        } catch (final Exception e) {
+            return null;
+        }
+
+
+        if (effectMap.get(uuid) != null && !effectMap.get(uuid).equals(deathEffect)) {
+            effectMap.put(uuid,deathEffect);
+        }
+
+        return deathEffect;
     }
 }

@@ -1,0 +1,8 @@
+me\wait_for_meee\deathEffectPlugin\command\EffectCommand.class
+me\wait_for_meee\deathEffectPlugin\model\PigDeathEffect.class
+me\wait_for_meee\deathEffectPlugin\model\SnowballDeathEffect.class
+me\wait_for_meee\deathEffectPlugin\listener\DeathListener.class
+me\wait_for_meee\deathEffectPlugin\DeathEffectPlugin.class
+me\wait_for_meee\deathEffectPlugin\model\ExplosionDeathEffect.class
+me\wait_for_meee\deathEffectPlugin\model\DeathEffect.class
+me\wait_for_meee\deathEffectPlugin\core\EffectManager.class

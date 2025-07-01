@@ -1,0 +1,7 @@
+name: DeathEffectPlugin
+version: '1.0-SNAPSHOT'
+main: me.wait_for_meee.deathEffectPlugin.DeathEffectPlugin
+api-version: '1.20'
+
+commands:
+  effect:

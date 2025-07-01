@@ -52,7 +52,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
            player.sendMessage(Component.text("[").color(NamedTextColor.WHITE)
                    .append(Component.text("✔").color(NamedTextColor.GREEN))
                    .append(Component.text("] You have ").color(NamedTextColor.WHITE))
-                   .append(Component.text("disabled ").color(NamedTextColor.RED))
+                   .append(Component.text("disabled").color(NamedTextColor.RED))
                    .append(Component.text(" your death effect!")));
            return true;
        }
@@ -102,7 +102,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
                 player.sendMessage(Component.text("[").color(NamedTextColor.WHITE)
                         .append(Component.text("✔").color(NamedTextColor.GREEN))
                         .append(Component.text("] You have ").color(NamedTextColor.WHITE))
-                        .append(Component.text("set ").color(NamedTextColor.GREEN))
+                        .append(Component.text("set").color(NamedTextColor.GREEN))
                         .append(Component.text(" your death effect to "))
                         .append(Component.text(arg).color(NamedTextColor.YELLOW)));
             }

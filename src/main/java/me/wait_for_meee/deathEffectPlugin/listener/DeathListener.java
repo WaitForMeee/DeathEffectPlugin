@@ -15,7 +15,7 @@ public final class DeathListener implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-
+        
     }
 
 }

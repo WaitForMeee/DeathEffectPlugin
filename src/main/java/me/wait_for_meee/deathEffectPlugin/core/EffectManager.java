@@ -62,7 +62,7 @@ public final class EffectManager {
 
                 Class<? extends DeathEffect> clazz = DeathEffect.getByString(value);
                 if (clazz == null) {
-                    DeathEffectPlugin.getInstance().getLogger().warning("(effects.yml) Invalid death effect at " + key + ": " + value);
+                    plugin.getLogger().warning("(effects.yml) Invalid death effect at " + key + ": " + value);
                     continue;
                 }
 
@@ -70,10 +70,10 @@ public final class EffectManager {
                 effectMap.put(uuid, effect);
 
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                DeathEffectPlugin.getInstance().getLogger().warning("(effects.yml) Failed to instantiate " + value + " for player " + key);
+                plugin.getLogger().warning("(effects.yml) Failed to instantiate " + value + " for player " + key);
                 e.printStackTrace();
             } catch (IllegalArgumentException e) {
-                DeathEffectPlugin.getInstance().getLogger().warning("(effects.yml) Invalid UUID format: " + key);
+                plugin.getLogger().warning("(effects.yml) Invalid UUID format: " + key);
             }
         }
     }

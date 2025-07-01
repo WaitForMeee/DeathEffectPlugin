@@ -21,4 +21,8 @@ public final class DeathEffectPlugin extends JavaPlugin {
     public void onDisable() {
 
     }
+
+    public static DeathEffectPlugin getInstance() {
+        return DeathEffectPlugin.getPlugin(DeathEffectPlugin.class);
+    }
 }

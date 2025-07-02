@@ -1,6 +1,5 @@
 package me.wait_for_meee.deathEffectPlugin.core;
 
-import me.wait_for_meee.deathEffectPlugin.DeathEffectPlugin;
 import me.wait_for_meee.deathEffectPlugin.model.DeathEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -10,7 +9,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nullable;
 import java.io.File;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;

@@ -1,8 +1,6 @@
 package me.wait_for_meee.deathEffectPlugin.model;
 
-import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

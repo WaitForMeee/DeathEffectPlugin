@@ -10,12 +10,14 @@ import java.util.List;
 
 public final class ExplosionDeathEffect extends DeathEffect {
 
-    //the particle effect
-    private static final List<Vector> velocities = new ArrayList<>();
+    //particle effect
+    private static final List<Vector> velocities1 = new ArrayList<>();
+    private static final List<Vector> velocities2 = new ArrayList<>();
 
     static {
-        for (int i = 0; i < 10; i++) {
-            double pitchDeg = i * 18;
+
+        for (int i = 0; i < 15; i++) {
+            double pitchDeg = i * 12;
 
 
             if (pitchDeg == 0) {
@@ -35,8 +37,20 @@ public final class ExplosionDeathEffect extends DeathEffect {
                 double z = Math.sin(pitchRad) * Math.sin(yawRad);
 
                 Vector velocity = new Vector(x, y, z).normalize().multiply(0.4);
-                velocities.add(velocity);
+                velocities1.add(velocity);
             }
+        }
+
+        for (int j = 0; j < 60; j++) {
+
+            double angle = Math.toRadians(j * 6);
+
+            double x = Math.cos(angle);
+            double z = Math.sin(angle);
+            double y = 0;
+
+            Vector vec = new Vector(x, y, z).normalize().multiply(0.6);
+            velocities2.add(vec);
         }
     }
 
@@ -56,8 +70,12 @@ public final class ExplosionDeathEffect extends DeathEffect {
 
         location.getWorld().playSound(location,Sound.ENTITY_FIREWORK_ROCKET_BLAST, SoundCategory.MASTER,0.5F,1F);
 
-        velocities.stream().forEach(velocity ->
-            location.getWorld().spawnParticle(Particle.FIREWORKS_SPARK,location,0,velocity.getX(),velocity.getY(),velocity.getZ(), 1)
-        );
+        velocities1.stream().forEach(velocity -> {
+            location.getWorld().spawnParticle(Particle.FIREWORKS_SPARK, location, 0, velocity.getX(), velocity.getY(), velocity.getZ(), 1);
+        });
+
+        velocities2.stream().forEach(velocity -> {
+           location.getWorld().spawnParticle(Particle.CLOUD, location, 0, velocity.getX(), velocity.getY(), velocity.getZ(), 1);
+        });
     }
 }

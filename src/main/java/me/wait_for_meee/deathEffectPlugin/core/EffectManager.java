@@ -41,7 +41,7 @@ public final class EffectManager {
 
         try {
             config.load(file);
-        } catch (final Throwable t) {
+        } catch (final Exception t) {
             t.printStackTrace();
         }
 
@@ -61,7 +61,7 @@ public final class EffectManager {
                 UUID uuid = UUID.fromString(key);
                 OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
 
-                Class<? extends DeathEffect> clazz = DeathEffect.getByString(value);
+                Class<? extends DeathEffect> clazz = DeathEffect.getByShortName(value);
                 if (clazz == null) {
                     plugin.getLogger().warning("(effects.yml) Invalid death effect at " + key + ": " + value);
                     continue;
@@ -72,7 +72,6 @@ public final class EffectManager {
 
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 plugin.getLogger().warning("(effects.yml) Failed to instantiate " + value + " for player " + key);
-                e.printStackTrace();
             } catch (IllegalArgumentException e) {
                 plugin.getLogger().warning("(effects.yml) Invalid UUID format: " + key);
             }
@@ -112,7 +111,7 @@ public final class EffectManager {
             config.createSection("effects_map");
         }
 
-        section.set(uuid.toString(),deathEffect.toString());
+        section.set(uuid.toString(),deathEffect.toShortName());
         save();
     }
 
@@ -129,7 +128,7 @@ public final class EffectManager {
 
         DeathEffect deathEffect;
 
-        Class<? extends DeathEffect> clazz = DeathEffect.getByString(section.getString(uuid.toString()));
+        Class<? extends DeathEffect> clazz = DeathEffect.getByShortName(section.getString(uuid.toString()));
 
         if (clazz == null) {
             return null;

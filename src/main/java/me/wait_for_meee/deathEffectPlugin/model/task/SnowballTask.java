@@ -1,5 +1,6 @@
 package me.wait_for_meee.deathEffectPlugin.model.task;
 
+import me.wait_for_meee.deathEffectPlugin.model.util.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -7,6 +8,7 @@ import org.bukkit.Sound;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Snowball;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,12 +51,12 @@ public class SnowballTask implements Runnable {
 
             snowball.setVelocity(randomVec());
 
+            snowball.getPersistentDataContainer().set(Util.snowballPDC, PersistentDataType.BOOLEAN,true);
+
             isSnowballSpawned = true;
         }
 
         if (snowball != null && snowball.isDead()) {
-
-            coverWithSnow(snowball.getLocation());
 
             snowball.remove();
 
@@ -63,7 +65,6 @@ public class SnowballTask implements Runnable {
         } else if (counter <= 0) {
 
             if (snowball != null) {
-                coverWithSnow(snowball.getLocation());
                 snowball.remove();
             }
 
@@ -76,37 +77,10 @@ public class SnowballTask implements Runnable {
 
     private @NotNull Vector randomVec() {
 
-        double x = random.nextDouble(-1,1);
-        double y = random.nextDouble(-1,1);
-        double z = random.nextDouble(-1,1);
+        double x = random.nextDouble(-0.5,0.5);
+        double y = random.nextDouble(0.3,1);
+        double z = random.nextDouble(-0.5,0.5);
 
         return new Vector(x,y,z);
-    }
-
-    private void coverWithSnow(@NotNull Location location) {
-
-        List<Location> locations = new ArrayList<>();
-
-        for (int i = -1; i <= 1;++i) {
-            for (int j = -1; j <= 1;++j) {
-                for (int k = -1; k<=1;++k) {
-
-                    Location temp = location.add(i,k,j);
-
-                    if (!temp.getBlock().getType().equals(Material.AIR) &&
-                            temp.add(0,1,0).getBlock().getType().equals(Material.AIR))
-                    {
-                        locations.add(temp);
-                    }
-                }
-            }
-        }
-
-        locations.stream().forEach(loc -> {
-            location.getBlock().setBlockData(Bukkit.createBlockData(Material.SNOW));
-        });
-
-        location.getWorld().playSound(location, Sound.BLOCK_SNOW_BREAK,1,1);
-
     }
 }

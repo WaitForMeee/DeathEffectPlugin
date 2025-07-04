@@ -72,7 +72,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
 
                 String arg = strings[1];
 
-                Class<? extends DeathEffect> clazz = DeathEffect.getByString(arg);
+                Class<? extends DeathEffect> clazz = DeathEffect.getByShortName(arg);
 
                 if (clazz == null) {
 
@@ -108,6 +108,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
 
         }
 
+        //get
         if (strings.length == 1 && strings[0].equalsIgnoreCase("get")) {
 
             DeathEffect deathEffect = effectManager.getEffect(player.getUniqueId());
@@ -121,7 +122,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
                 player.sendMessage(Component.text("[").color(NamedTextColor.WHITE)
                         .append(Component.text("✔").color(NamedTextColor.GREEN))
                         .append(Component.text("] Your death effect is ").color(NamedTextColor.WHITE))
-                        .append(Component.text(deathEffect.toString()).color(NamedTextColor.YELLOW)));
+                        .append(Component.text(deathEffect.toShortName()).color(NamedTextColor.YELLOW)));
             }
 
             return true;
@@ -141,7 +142,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
         }
 
         if (strings.length == 2 && strings[0].equalsIgnoreCase("set")) {
-            return Stream.of("ExplosionDeathEffect","PigDeathEffect","SnowballDeathEffect")
+            return Stream.of("Explosion","Pig","Snowball")
                     .filter(arg -> arg.startsWith(strings[1])).collect(Collectors.toList());
         }
 

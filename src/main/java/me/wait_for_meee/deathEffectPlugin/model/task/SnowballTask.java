@@ -77,9 +77,9 @@ public class SnowballTask implements Runnable {
 
     private @NotNull Vector randomVec() {
 
-        double x = random.nextDouble(-0.5,0.5);
-        double y = random.nextDouble(0.3,1);
-        double z = random.nextDouble(-0.5,0.5);
+        double x = random.nextDouble(-0.3,0.3);
+        double y = random.nextDouble(0.3,0.5);
+        double z = random.nextDouble(-0.3,0.3);
 
         return new Vector(x,y,z);
     }

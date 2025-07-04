@@ -47,8 +47,6 @@ public final class PigTask implements Runnable{
         return pigTaskScheduler;
     }
 
-    /// TODO make a ring of redstone dust particles (orange red and yellow)
-
     private Pig pig;
 
     @NotNull

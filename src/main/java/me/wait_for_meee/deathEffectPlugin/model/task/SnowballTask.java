@@ -27,7 +27,7 @@ public class SnowballTask implements Runnable {
     @NotNull
     private final Location location;
 
-    private int counter = 5*20;
+    private int counter = 10*20;
     private boolean isSnowballSpawned = false;
 
     public SnowballTask(@NotNull Location location) {

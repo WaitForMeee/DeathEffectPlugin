@@ -42,5 +42,11 @@ public final class DeathEffectPlugin extends JavaPlugin {
                 task.cancel();
             }
         });
+
+        snowballTaskScheduler.getAllTasks().stream().forEach(task -> {
+            if (task != null && !task.isCancelled()) {
+                task.cancel();
+            }
+        });
     }
 }

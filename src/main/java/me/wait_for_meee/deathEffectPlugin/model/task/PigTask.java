@@ -110,7 +110,7 @@ public final class PigTask implements Runnable{
 
         location.getWorld().playSound(location, Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST_FAR, 2F, 1F);
         location.getWorld().playSound(location, Sound.ENTITY_FIREWORK_ROCKET_BLAST_FAR, 2F, 1F);
-        location.getWorld().playSound(location, Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, 2F, 1.5F);
+        location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 2F, 1.5F);
     }
 
     private void particleRing(@NotNull Location location) {

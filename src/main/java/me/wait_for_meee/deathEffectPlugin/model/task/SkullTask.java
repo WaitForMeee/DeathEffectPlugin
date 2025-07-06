@@ -1,13 +1,9 @@
 package me.wait_for_meee.deathEffectPlugin.model.task;
 
 import me.wait_for_meee.deathEffectPlugin.model.task.scheduler.SkullTaskScheduler;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.SmallFireball;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
@@ -21,6 +17,9 @@ public final class SkullTask implements Runnable{
     private static SkullTaskScheduler skullTaskScheduler;
 
     private static final List<Vector> vecList = new ArrayList<>();
+    private static final List<Vector> ring = new ArrayList<>();
+
+    private static final Particle.DustOptions blackDust = new Particle.DustOptions(Color.fromRGB(0,0,0),1F);
 
     static {
         for (int j = 0; j < 360; j++) {
@@ -31,8 +30,20 @@ public final class SkullTask implements Runnable{
             double z = Math.sin(rad);
             double y = 0;
 
-            Vector vec = new Vector(x, y, z).normalize().multiply(0.6);
+            Vector vec = new Vector(x, y, z).normalize().multiply(0.6F);
             vecList.add(vec);
+        }
+
+        for (int j = 0; j < 360; j += 45) {
+
+            double rad = Math.toRadians(j);
+
+            double x = Math.cos(rad);
+            double z = Math.sin(rad);
+            double y = 0;
+
+            Vector vec = new Vector(x, y, z).normalize().multiply(0.5F);
+            ring.add(vec);
         }
     }
 
@@ -82,7 +93,16 @@ public final class SkullTask implements Runnable{
 
             loc.add(0,1.25,0);
 
-            loc.getWorld().spawnParticle(Particle.END_ROD,loc,0,0,0,0,0);
+            World world = location.getWorld();
+
+            for (Vector vec : ring) {
+
+                Location loc1 = loc.clone().add(vec);
+
+                world.spawnParticle(Particle.REDSTONE,loc1,0,0.0,0.0,0.0,1,blackDust);
+            }
+
+            world.spawnParticle(Particle.END_ROD,loc,0,0,0,0,0);
         }
 
         if (counter <= 0) {

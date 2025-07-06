@@ -17,6 +17,9 @@ public final class PigDeathEffect extends DeathEffect {
     @Override
     public void displayDeathEffect() {
 
+        if (!player.isOnline())
+            return;
+
         PigTask.getPigTaskScheduler()
                 .startPigTask(new PigTask( ( (Player) player ).getLocation()) );
 

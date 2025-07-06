@@ -7,10 +7,14 @@ C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deat
 C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\DeathEffect.java
 C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\ExplosionDeathEffect.java
 C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\PigDeathEffect.java
+C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\RepelDeathEffect.java
+C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\SkullDeathEffect.java
 C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\SnowballDeathEffect.java
 C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\IObserver.java
 C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\PigTask.java
-C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\PigTaskScheduler.java
+C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\scheduler\PigTaskScheduler.java
+C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\scheduler\SkullTaskScheduler.java
+C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\scheduler\SnowballTaskScheduler.java
+C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\SkullTask.java
 C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\SnowballTask.java
-C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\task\SnowballTaskScheduler.java
 C:\Users\user\IdeaProjects\DeathEffectPlugin\src\main\java\me\wait_for_meee\deathEffectPlugin\model\util\Util.java

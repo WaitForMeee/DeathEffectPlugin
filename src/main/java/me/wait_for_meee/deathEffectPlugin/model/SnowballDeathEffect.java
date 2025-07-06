@@ -18,6 +18,9 @@ public final class SnowballDeathEffect extends DeathEffect {
     @Override
     public void displayDeathEffect() {
 
+        if (!player.isOnline())
+            return;
+
         for (int i = 0; i < 5; ++i) {
             SnowballTask.getSnowballTaskScheduler()
                     .startSnowballTask(new SnowballTask( ( (Player) player ).getLocation()) );

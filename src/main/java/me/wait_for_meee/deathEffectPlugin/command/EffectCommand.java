@@ -128,9 +128,6 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
             return true;
         }
 
-
-
-
         return true;
     }
 
@@ -142,7 +139,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
         }
 
         if (strings.length == 2 && strings[0].equalsIgnoreCase("set")) {
-            return Stream.of("Explosion","Pig","Snowball")
+            return Stream.of("Explosion","Pig","Snowball","Repel","Skull")
                     .filter(arg -> arg.startsWith(strings[1])).collect(Collectors.toList());
         }
 

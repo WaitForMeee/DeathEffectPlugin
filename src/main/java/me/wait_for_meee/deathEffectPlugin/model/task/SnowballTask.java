@@ -1,24 +1,20 @@
 package me.wait_for_meee.deathEffectPlugin.model.task;
 
+import me.wait_for_meee.deathEffectPlugin.model.task.scheduler.SnowballTaskScheduler;
 import me.wait_for_meee.deathEffectPlugin.model.util.Util;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Snowball;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-public class SnowballTask implements Runnable {
+public final class SnowballTask implements Runnable {
 
     private static final Random random = new Random();
+    @NotNull
     private static SnowballTaskScheduler snowballTaskScheduler;
 
 
@@ -38,6 +34,7 @@ public class SnowballTask implements Runnable {
         snowballTaskScheduler = scheduler;
     }
 
+    @NotNull
     public static SnowballTaskScheduler getSnowballTaskScheduler() {
         return snowballTaskScheduler;
     }

@@ -1,11 +1,10 @@
 package me.wait_for_meee.deathEffectPlugin.model.task;
 
+import me.wait_for_meee.deathEffectPlugin.model.task.scheduler.PigTaskScheduler;
 import me.wait_for_meee.deathEffectPlugin.model.util.Util;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Firework;
 import org.bukkit.entity.Pig;
-import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
@@ -15,6 +14,7 @@ import java.util.List;
 
 public final class PigTask implements Runnable{
 
+    @NotNull
     private static PigTaskScheduler pigTaskScheduler;
 
     private static final Particle.DustOptions redDust = new Particle.DustOptions(Color.fromRGB(255, 0, 0), 1.5F);
@@ -43,7 +43,7 @@ public final class PigTask implements Runnable{
         pigTaskScheduler = scheduler;
     }
 
-    public static PigTaskScheduler getPigTaskScheduler() {
+    public static @NotNull PigTaskScheduler getPigTaskScheduler() {
         return pigTaskScheduler;
     }
 
@@ -68,7 +68,7 @@ public final class PigTask implements Runnable{
             pig = (Pig) location.getWorld().spawnEntity(location, EntityType.PIG);
 
             pig.setAI(false);
-
+            pig.setSaddle(true);
             pig.getPersistentDataContainer().set(Util.pigPDC, PersistentDataType.BOOLEAN,true);
 
             pig.setInvulnerable(true);

@@ -4,16 +4,20 @@ import me.wait_for_meee.deathEffectPlugin.command.EffectCommand;
 import me.wait_for_meee.deathEffectPlugin.core.EffectManager;
 import me.wait_for_meee.deathEffectPlugin.listener.*;
 import me.wait_for_meee.deathEffectPlugin.model.task.PigTask;
-import me.wait_for_meee.deathEffectPlugin.model.task.PigTaskScheduler;
+import me.wait_for_meee.deathEffectPlugin.model.task.SkullTask;
+import me.wait_for_meee.deathEffectPlugin.model.task.scheduler.PigTaskScheduler;
 import me.wait_for_meee.deathEffectPlugin.model.task.SnowballTask;
-import me.wait_for_meee.deathEffectPlugin.model.task.SnowballTaskScheduler;
+import me.wait_for_meee.deathEffectPlugin.model.task.scheduler.SkullTaskScheduler;
+import me.wait_for_meee.deathEffectPlugin.model.task.scheduler.SnowballTaskScheduler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DeathEffectPlugin extends JavaPlugin {
 
     private EffectManager effectManager;
+
     private PigTaskScheduler pigTaskScheduler;
     private SnowballTaskScheduler snowballTaskScheduler;
+    private SkullTaskScheduler skullTaskScheduler;
 
     @Override
     public void onEnable() {
@@ -21,9 +25,11 @@ public final class DeathEffectPlugin extends JavaPlugin {
         effectManager = new EffectManager(this);
         pigTaskScheduler = new PigTaskScheduler(this);
         snowballTaskScheduler = new SnowballTaskScheduler(this);
+        skullTaskScheduler = new SkullTaskScheduler(this);
 
         PigTask.setPigTaskScheduler(pigTaskScheduler);
         SnowballTask.setSnowballScheduler(snowballTaskScheduler);
+        SkullTask.setSkullTaskScheduler(skullTaskScheduler);
 
         effectManager.load();
 

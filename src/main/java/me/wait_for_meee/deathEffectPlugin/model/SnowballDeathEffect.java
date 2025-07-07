@@ -9,21 +9,12 @@ import org.jetbrains.annotations.NotNull;
 //when a player dies, snowballs are thrown in random directions which cover the ground with snow when they hit it
 public final class SnowballDeathEffect extends DeathEffect {
 
-    public SnowballDeathEffect(@NotNull OfflinePlayer player) {
-        super(player);
-    }
-
-
-
     @Override
-    public void displayDeathEffect() {
-
-        if (!player.isOnline())
-            return;
+    public void displayDeathEffect(@NotNull Location location) {
 
         for (int i = 0; i < 5; ++i) {
             SnowballTask.getSnowballTaskScheduler()
-                    .startSnowballTask(new SnowballTask( ( (Player) player ).getLocation()) );
+                    .startSnowballTask(new SnowballTask(location));
         }
     }
 }

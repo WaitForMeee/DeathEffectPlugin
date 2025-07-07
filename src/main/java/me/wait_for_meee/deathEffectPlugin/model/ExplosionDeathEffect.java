@@ -54,19 +54,8 @@ public final class ExplosionDeathEffect extends DeathEffect {
         }
     }
 
-    public ExplosionDeathEffect(@NotNull OfflinePlayer player) {
-        super(player);
-    }
-
     @Override
-    public void displayDeathEffect() {
-
-        if (!player.isOnline())
-            return;
-
-        Player online = (Player) player;
-
-        Location location = online.getLocation();
+    public void displayDeathEffect(@NotNull Location location) {
 
         location.getWorld().playSound(location,Sound.ENTITY_FIREWORK_ROCKET_BLAST, SoundCategory.MASTER,0.5F,1F);
 

@@ -52,7 +52,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
                    .append(Component.text("✔").color(NamedTextColor.GREEN))
                    .append(Component.text("] You have ").color(NamedTextColor.WHITE))
                    .append(Component.text("disabled").color(NamedTextColor.RED))
-                   .append(Component.text(" your death effect!")));
+                   .append(Component.text(" your kill effect!")));
            return true;
        }
 
@@ -63,7 +63,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
             if (strings.length == 1) {
                 player.sendMessage(Component.text("[").color(NamedTextColor.WHITE)
                         .append(Component.text("✖").color(NamedTextColor.RED))
-                        .append(Component.text("] Please, provide the death effect!").color(NamedTextColor.WHITE)));
+                        .append(Component.text("] Please, provide the kill effect!").color(NamedTextColor.WHITE)));
                 return true;
             }
 
@@ -78,7 +78,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
 
                     player.sendMessage(Component.text("[").color(NamedTextColor.WHITE)
                             .append(Component.text("✖").color(NamedTextColor.RED))
-                            .append(Component.text("] You provided an invalid death effect!").color(NamedTextColor.WHITE)));
+                            .append(Component.text("] You provided an invalid kill effect!").color(NamedTextColor.WHITE)));
 
                     return true;
                 }
@@ -86,14 +86,14 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
                 Constructor<? extends DeathEffect> constructor;
 
                 try {
-                    constructor = clazz.getDeclaredConstructor(OfflinePlayer.class);
+                    constructor = clazz.getDeclaredConstructor();
                 } catch (final Exception e) {
                     e.printStackTrace();
                     return true;
                 }
 
                 try {
-                    effectManager.setEffect(player.getUniqueId(), constructor.newInstance(player));
+                    effectManager.setEffect(player.getUniqueId(), constructor.newInstance());
                 } catch (final Exception e) {
                     e.printStackTrace();
                 }
@@ -102,7 +102,7 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
                         .append(Component.text("✔").color(NamedTextColor.GREEN))
                         .append(Component.text("] You have ").color(NamedTextColor.WHITE))
                         .append(Component.text("set").color(NamedTextColor.GREEN))
-                        .append(Component.text(" your death effect to "))
+                        .append(Component.text(" your kill effect to "))
                         .append(Component.text(arg).color(NamedTextColor.YELLOW)));
             }
 
@@ -116,12 +116,12 @@ public final class EffectCommand implements CommandExecutor, TabExecutor {
             if (deathEffect == null) {
                 player.sendMessage(Component.text("[").color(NamedTextColor.WHITE)
                         .append(Component.text("✔").color(NamedTextColor.GREEN))
-                        .append(Component.text("] You have not set your death effect yet!").color(NamedTextColor.WHITE)));
+                        .append(Component.text("] You have not set your kill effect yet!").color(NamedTextColor.WHITE)));
             } else {
 
                 player.sendMessage(Component.text("[").color(NamedTextColor.WHITE)
                         .append(Component.text("✔").color(NamedTextColor.GREEN))
-                        .append(Component.text("] Your death effect is ").color(NamedTextColor.WHITE))
+                        .append(Component.text("] Your kill effect is ").color(NamedTextColor.WHITE))
                         .append(Component.text(deathEffect.toShortName()).color(NamedTextColor.YELLOW)));
             }
 

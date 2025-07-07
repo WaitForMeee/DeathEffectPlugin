@@ -1,19 +1,15 @@
 package me.wait_for_meee.deathEffectPlugin.model;
 
-import org.bukkit.OfflinePlayer;
+import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class DeathEffect {
 
-    @NotNull
-    protected final OfflinePlayer player;
-
-    public DeathEffect(@NotNull OfflinePlayer player) {
-        this.player = player;
+    public DeathEffect() {
     }
 
-    public abstract void displayDeathEffect();
+    public abstract void displayDeathEffect(@NotNull Location location);
 
     @SuppressWarnings("unchecked")
     @Nullable

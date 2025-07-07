@@ -52,7 +52,7 @@ public final class PigTask implements Runnable{
     @NotNull
     private final Location location;
 
-    private int counter = 4*20;
+    private int counter = 3*20;
     private boolean isPigSpawned = false;
 
     public PigTask(@NotNull Location location) {
@@ -85,7 +85,7 @@ public final class PigTask implements Runnable{
 
         if (counter <= 0) {
 
-            Location effectLocation = this.location.add(0,0.05*4*20,0);
+            Location effectLocation = this.location.add(0,0.05*3*20,0);
 
             if (pig != null) {
                 effectLocation = pig.getLocation();
@@ -97,6 +97,8 @@ public final class PigTask implements Runnable{
             pigTaskScheduler.update(this);
         }
     }
+
+
 
     private void fireworkEffect(@NotNull Location location) {
 

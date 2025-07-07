@@ -6,6 +6,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -18,12 +19,14 @@ public final class EffectManager {
 
     private Map<UUID, DeathEffect> effectMap;
 
-
+    @NotNull
     private File file;
+    @NotNull
     private JavaPlugin plugin;
+    @NotNull
     private YamlConfiguration config;
 
-    public EffectManager(final JavaPlugin plugin) {
+    public EffectManager(@NotNull JavaPlugin plugin) {
         this.plugin = plugin;
         effectMap = new HashMap<>();
     }
@@ -67,7 +70,7 @@ public final class EffectManager {
                     continue;
                 }
 
-                DeathEffect effect = clazz.getDeclaredConstructor(OfflinePlayer.class).newInstance(player);
+                DeathEffect effect = clazz.getDeclaredConstructor().newInstance();
                 effectMap.put(uuid, effect);
 
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
@@ -87,7 +90,7 @@ public final class EffectManager {
         }
     }
 
-    public void disableEffect(UUID uuid) {
+    public void disableEffect(@NotNull UUID uuid) {
 
         effectMap.put(uuid,null);
 
@@ -101,7 +104,7 @@ public final class EffectManager {
         save();
     }
 
-    public void setEffect(UUID uuid, DeathEffect deathEffect) {
+    public void setEffect(@NotNull UUID uuid,@NotNull DeathEffect deathEffect) {
 
         effectMap.put(uuid,deathEffect);
 
@@ -135,7 +138,7 @@ public final class EffectManager {
         }
 
         try {
-            deathEffect = clazz.getDeclaredConstructor(OfflinePlayer.class).newInstance(Bukkit.getOfflinePlayer(uuid));
+            deathEffect = clazz.getDeclaredConstructor().newInstance();
         } catch (final Exception e) {
             return null;
         }

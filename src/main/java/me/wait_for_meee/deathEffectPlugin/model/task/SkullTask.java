@@ -61,7 +61,7 @@ public final class SkullTask implements Runnable{
     private ArmorStand skull;
 
     private boolean isSkullSpawned = false;
-    private int counter = 4*20;
+    private int counter = 3*20;
 
     public SkullTask(@NotNull Location location) {
         this.location = location;
@@ -107,7 +107,7 @@ public final class SkullTask implements Runnable{
 
         if (counter <= 0) {
 
-            Location lightning_loc = location.add(0,0.05*4*20,0).add(0,1.25,0);
+            Location lightning_loc = location.add(0,0.05*3*20,0).add(0,1.25,0);
 
             if (skull != null) {
                 lightning_loc = skull.getLocation();

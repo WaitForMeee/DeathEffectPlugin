@@ -11,28 +11,21 @@ import java.util.Collection;
 
 public final class RepelDeathEffect extends DeathEffect {
 
-    public RepelDeathEffect(@NotNull OfflinePlayer player) {
-        super(player);
-    }
-
     @Override
-    public void displayDeathEffect() {
-
-        if (!player.isOnline())
-            return;
-
-        Player p = (Player) player;
-
-        Location location = p.getLocation();
+    public void displayDeathEffect(@NotNull Location location) {
 
         Collection<Player> nearbyPlayers = location.getNearbyPlayers(3);
-        nearbyPlayers.remove(p);
 
         nearbyPlayers.forEach(player -> {
 
-            Vector velocity = location.toVector().subtract(player.getLocation().toVector()).normalize().multiply(-1);
+            Vector vec = location.toVector().subtract(player.getLocation().toVector());
 
-            player.setVelocity(velocity);
+            if (vec.lengthSquared() != 0) {
+
+                Vector velocity = vec.normalize().multiply(-1);
+
+                player.setVelocity(velocity);
+            }
         });
 
         location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXPLODE,1F,1.5F);

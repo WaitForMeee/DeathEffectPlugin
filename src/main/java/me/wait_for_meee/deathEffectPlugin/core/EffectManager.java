@@ -61,8 +61,8 @@ public final class EffectManager {
             String value = entry.getValue().toString();
 
             try {
+
                 UUID uuid = UUID.fromString(key);
-                OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
 
                 Class<? extends DeathEffect> clazz = DeathEffect.getByShortName(value);
                 if (clazz == null) {

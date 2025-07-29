@@ -89,7 +89,7 @@ public final class SkullTask implements Runnable{
 
             Location loc = skull.getLocation();
 
-            skull.teleport(loc.clone().add(0,0.05,0));
+            skull.teleport(loc.clone().add(0,0.06,0));
 
             loc.add(0,1.25,0);
 
@@ -107,7 +107,7 @@ public final class SkullTask implements Runnable{
 
         if (counter <= 0) {
 
-            Location lightning_loc = location.add(0,0.05*3*20,0).add(0,1.25,0);
+            Location lightning_loc = location.add(0,0.08*3*20,0).add(0,1.25,0);
 
             if (skull != null) {
                 lightning_loc = skull.getLocation();

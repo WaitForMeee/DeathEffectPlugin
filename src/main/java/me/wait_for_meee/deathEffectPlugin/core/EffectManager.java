@@ -37,7 +37,6 @@ public final class EffectManager {
 
         if (!file.exists()) {
             plugin.saveResource("effects.yml",false);
-            save();
         }
 
         config = new YamlConfiguration();
